@@ -10,3 +10,17 @@ php artisan migrate:refresh
 php artisan make:auth
 ===
 php artisan make:model Role -m
+
+===
+php artisan tinker
+$user = App\User::find(1)
+$user->role
+===
+create user via tinker
+App\User::create(['role_id'=>2,'name'=>'ahmed','email'=>'ahmed@email.com','is_active'=>1])
+$user->role_id = 2
+$user->save()
+$user->is_active = 2
+$user->save()
+$user->password = 'fake password'
+$user->save()
