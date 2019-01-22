@@ -42,6 +42,8 @@ composer require "laravelcollective/html":"5.2.*"
 ==
 git add .
 git commit -m "create new user validation request"
+git commit -m "get users data without photo"
+git commit -m "show users data with photos"
 git push
 ===
 php artisan make:migration add_photo_id_to_users --table=users
