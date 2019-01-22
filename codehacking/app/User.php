@@ -28,4 +28,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Role');
     }
+
+    protected $dates = [
+        'created_at',
+        'updated_at'
+    ];
 }

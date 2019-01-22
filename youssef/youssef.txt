@@ -34,3 +34,5 @@ php artisan --version
 npm rebuild node-sass
 ===
 npm install laravel-elixir --save-dev
+---
+composer require "laravelcollective/html":"5.2.*"
