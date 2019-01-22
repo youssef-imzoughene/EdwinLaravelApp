@@ -26,3 +26,11 @@ $user->password = 'fake password'
 $user->save()
 ===
 php artisan make:controller --resource AdminUsersController
+===
+npm install --global gulp
+===
+php artisan --version
+===
+npm rebuild node-sass
+===
+npm install laravel-elixir --save-dev
