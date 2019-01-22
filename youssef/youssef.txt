@@ -24,3 +24,5 @@ $user->is_active = 2
 $user->save()
 $user->password = 'fake password'
 $user->save()
+===
+php artisan make:controller --resource AdminUsersController
