@@ -9,7 +9,10 @@ php artisan migrate:refresh
 ===
 php artisan make:auth
 ===
+php artisan make:request UsersRequest
+===
 php artisan make:model Role -m
+php artisan make:model Photo -m
 
 ===
 php artisan tinker
@@ -36,3 +39,9 @@ npm rebuild node-sass
 npm install laravel-elixir --save-dev
 ---
 composer require "laravelcollective/html":"5.2.*"
+==
+git add .
+git commit -m "create new user validation request"
+git push
+===
+php artisan make:migration add_photo_id_to_users --table=users

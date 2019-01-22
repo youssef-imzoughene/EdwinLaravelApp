@@ -127,7 +127,7 @@
                             </li>
 
                             <li>
-                                <a href="/users/create">Create User</a>
+                                <a href="/admin/users/create">Create User</a>
                             </li>
 
                         </ul>
