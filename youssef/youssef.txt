@@ -3,6 +3,9 @@ composer create-project --prefer-dist laravel/laravel codehacking 5.2.29
 php artisan serve
 ===
 php artisan migrate
+---
+php artisan migrate:refresh
+
 ===
 php artisan make:auth
 ===
