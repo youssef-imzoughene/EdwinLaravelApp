@@ -12,6 +12,7 @@
        <th>Status</th>
        <th>Created</th>
        <th>Updated</th>
+       <th>Photo</th>
      </tr>
    </thead>
    <tbody>
@@ -25,6 +26,9 @@
            <td>{{$user->is_active ==1 ? 'Active' : 'Not Active'}}</td>
            <td>{{$user->created_at->diffForHumans()}}</td>
            <td>{{$user->updated_at->diffForHumans()}}</td>
+           <td>
+              <img src="{{$user->photo != null ? '/images/'.$user->photo->photo_path : '#'}}" alt="" style="width:100px">
+             </td>
          </tr>
        @endforeach
      @endif
