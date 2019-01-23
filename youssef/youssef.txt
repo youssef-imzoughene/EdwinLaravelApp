@@ -44,8 +44,11 @@ git add .
 git commit -m "create new user validation request"
 git commit -m "get users data without photo"
 git commit -m "show users data with photos"
+git commit -m "update users"
 git push
 ===
 php artisan make:migration add_photo_id_to_users --table=users
 ===
 php artisan make:request UserEditRequest
+===
+php artisan make:middleware Admin

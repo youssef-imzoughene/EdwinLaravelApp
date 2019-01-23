@@ -38,4 +38,11 @@ class User extends Authenticatable
         'created_at',
         'updated_at'
     ];
+
+    public function isAdmin(){
+      if($this->role->name == "administrator"){
+        return true;
+      }
+      return false;
+    }
 }

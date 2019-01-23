@@ -38,6 +38,13 @@
       </div>
     {!! Form::close() !!}
 
+
+
+    {!! Form::open(['method' => 'DELETE','action' => ['AdminUsersController@destroy',$user->id]]) !!}
+    <div class="form-group">
+      {!! Form::submit('Delete', ['class'=>'btn btn-danger']) !!}
+    </div>
+    {!! Form::close() !!}
     @include('includes.formErrors')
   </div>
 
