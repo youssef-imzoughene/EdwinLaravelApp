@@ -7,6 +7,7 @@ use App\Role;
 use App\Photo;
 use Illuminate\Http\Request;
 use App\Http\Requests\UsersRequest;
+use App\Http\Requests\UserEditRequest;
 
 use Carbon;
 
@@ -44,7 +45,16 @@ class AdminUsersController extends Controller
     public function store(UsersRequest $request)
     {
       //return $request->all();
-      $input = $request->all();
+
+      if(trim($request->password) == ''){
+        $input = $request->except('password');
+      }else{
+        $input = $request->all();
+        $input['password']=bcrypt($input['password']);
+      }
+
+
+
 
       if($file = $request->file('photo_id')){
         $name = time() . $file->getClientOriginalName();
@@ -54,7 +64,7 @@ class AdminUsersController extends Controller
         $input['photo_id']=$photo->id;
       }
 
-      $input['password']=bcrypt($input['password']);
+
 
       $user = User::create($input);
       //return $user;
@@ -82,7 +92,9 @@ class AdminUsersController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.users.edit');
+        $user = User::findOrFail($id);
+        $roles = Role::lists('name','id')->all();
+        return view('admin.users.edit',compact('user','roles'));
     }
 
     /**
@@ -93,8 +105,28 @@ class AdminUsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserEditRequest $request, $id)
     {
+      $user = User::find($id);
+
+      if(trim($request->password) == ''){
+        $input = $request->except('password');
+      }else{
+        $input = $request->all();
+        $input['password']=bcrypt($input['password']);
+      }
+
+      if($file = $request->file('photo_id')){
+        $name = time() . $file->getClientOriginalName();
+        $file->move('images',$name);
+        $photo = Photo::create(['photo_path'=>$name]);
+        //return 'photo exist';
+        $input['photo_id']=$photo->id;
+      }
+
+      $user->update($input);
+      //return $request->all();
+      return redirect('/admin/users');
     }
 
     /**

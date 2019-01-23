@@ -47,3 +47,5 @@ git commit -m "show users data with photos"
 git push
 ===
 php artisan make:migration add_photo_id_to_users --table=users
+===
+php artisan make:request UserEditRequest
