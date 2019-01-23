@@ -8,6 +8,7 @@ use App\Photo;
 use Illuminate\Http\Request;
 use App\Http\Requests\UsersRequest;
 use App\Http\Requests\UserEditRequest;
+use Illuminate\Support\Facades\Session;
 
 use Carbon;
 
@@ -139,7 +140,13 @@ class AdminUsersController extends Controller
     public function destroy($id)
     {
       $user = User::find($id);
+      $path = public_path().$user->photo->getFileAttribute($user->photo->photo_path);
+      //return $path;
+      unlink($path);
       $user->delete();
+
+      Session::flash('deleted_user','The user has been deleted');
+
       return redirect('/admin/users');
     }
 }
